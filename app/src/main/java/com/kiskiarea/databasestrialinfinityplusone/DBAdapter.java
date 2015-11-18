@@ -24,6 +24,10 @@ public class DBAdapter
     static final String KEY_ATOMIC_WEIGHT = "atomic_weight";
     static final String KEY_NAME = "name";
     static final String KEY_SYMBOL = "symbol";
+    static final String KEY_BPOINT = "boiling_point";
+    static final String KEY_MPOINT = "melting_point";
+    static final String KEY_DENSITY = "density";
+    static final String KEY_PHASE = "phase";
 
 
     final Context context;
@@ -33,8 +37,8 @@ public class DBAdapter
 
 
 
-    static final String DATABASE_CREATE = "create table periodic_table (_atomic_number integer primary key, " +
-            "atomic_weight numeric, name text, symbol text);";
+    static final String DATABASE_CREATE = "create table periodic_table (_atomic_number integer " +
+            "primary key, " + "atomic_weight numeric, name text, symbol text);";
 
 
 
@@ -87,33 +91,24 @@ public class DBAdapter
     //---------retrieves all the elements
     public Cursor getAllElements()
     {
-
-
-        return db.query(DATABASE_TABLE, new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME, KEY_SYMBOL},
+        return db.query(DATABASE_TABLE, new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME,
+                        KEY_SYMBOL, KEY_BPOINT, KEY_MPOINT, KEY_DENSITY, KEY_PHASE},
                 null, null, null, null, null);
-
-
-
-
     }
 
     //---------retrieves a particular element
     public Cursor getElement(long rowId) throws SQLException
     {
-
-
-
         Cursor mCursor = db.query(true, DATABASE_TABLE,
-                new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME, KEY_SYMBOL},
-                KEY_ATOMIC_NUMBER + "=" + rowId, null, null, null, null,null);
-
+                new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME, KEY_SYMBOL, KEY_BPOINT,
+                        KEY_MPOINT, KEY_DENSITY, KEY_PHASE}, KEY_ATOMIC_NUMBER
+                            + "=" + rowId, null, null, null, null,null);
         if(mCursor != null)
         {
             mCursor.moveToFirst();
         }
         return mCursor;
     }
-
 
     public Element findElement(String elementname) throws SQLException
     {
@@ -134,6 +129,10 @@ public class DBAdapter
             element.set_atomic_weight(Double.parseDouble(cursor.getString(1)));
             element.set_name(cursor.getString(2));
             element.set_symbol(cursor.getString(3));
+            element.set_melting_point(Integer.parseInt(cursor.getString(4)));
+            element.set_boiling_point(Integer.parseInt(cursor.getString(5)));
+            element.set_density(Integer.parseInt(cursor.getString(6)));
+            element.set_phase(cursor.getString(7));
             cursor.close();
         }
         else

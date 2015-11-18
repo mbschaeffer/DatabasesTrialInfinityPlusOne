@@ -29,10 +29,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     TextView resultsView;
 
     EditText nameBoxFind;
-    TextView nameBox;
+    TextView elementNameBox;
     TextView atomicNumberBox;
-    TextView symbolBox;
     TextView atomicWeightBox;
+    TextView symbolBox;
+    TextView meltingBox;
+    TextView boilingBox;
+    TextView densityBox;
+    TextView phaseBox;
     SearchView elementSearchV;
 
 
@@ -51,55 +55,28 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setSupportActionBar(toolbar);
 
 
-
         resultsView = (TextView) findViewById(R.id.txtResults);
         nameBoxFind = (EditText) findViewById(R.id.txtFindElement);
-        nameBox = (TextView) findViewById(R.id.txtName);
+        elementNameBox = (TextView) findViewById(R.id.txtName);
         atomicNumberBox = (TextView) findViewById(R.id.txtAtomicNumber);
         atomicWeightBox = (TextView) findViewById(R.id.txtAtomicWeight);
         symbolBox = (TextView) findViewById(R.id.txtSymbol);
+        meltingBox = (TextView) findViewById(R.id.txtMelting);
+        boilingBox = (TextView) findViewById(R.id.txtBoiling);
+        densityBox = (TextView) findViewById(R.id.txtDensity);
+        phaseBox = (TextView) findViewById(R.id.txtPhase);
         elementSearchV = (SearchView) findViewById(R.id.searchView);
-
-        nameList = new ArrayList<String>();
-
-        for(int i = 0; i<20 ; i++)
-        {
-            nameList.add("Element" + i);
-        }
-
-        myList = (ListView) findViewById(R.id.list);
-
-        defaultAdapter = new MyCustomAdapter(MainActivity.this,nameList);
-
-  /*      myList.setAdapter(defaultAdapter);
-
-
-        elementSearchV.setIconifiedByDefault(false);
-
-        elementSearchV.setOnQueryTextListener(this);
-
-        elementSearchV.setOnCloseListener(this);
-*/
-
-
-
-
-
-
-
-
 
         DBAdapter db = new DBAdapter(this);
 
-        try{
+        try {
             String destPath = "/data/data/" + getPackageName() + "/databases/";
 
             File f = new File(destPath);
 
-            if(!f.exists()){
+            if (!f.exists()) {
 
-                Toast.makeText(this, "File does not exist" , Toast.LENGTH_LONG).show();
-
+                Toast.makeText(this, "File does not exist", Toast.LENGTH_LONG).show();
 
 
                 f.mkdirs();
@@ -109,15 +86,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 CopyDB(getBaseContext().getAssets().open("myPeriodicTableDB"), new FileOutputStream(destPath + "/myPeriodicTableDB"));
 
             }
-            Toast.makeText(this, "The file exists!" , Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "The file exists!", Toast.LENGTH_LONG).show();
 
-        }catch (FileNotFoundException e) {
-            Toast.makeText(this, "File not found" , Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "File not found", Toast.LENGTH_LONG).show();
 
             e.printStackTrace();
-        }catch (IOException e){
+        } catch (IOException e) {
 
-            Toast.makeText(this, "IOException issue" , Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "IOException issue", Toast.LENGTH_LONG).show();
 
             e.printStackTrace();
         }
@@ -125,58 +102,27 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         db.open();
         Cursor c = db.getAllElements();
-        Toast.makeText(this, "got the elements" , Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "got the elements", Toast.LENGTH_LONG).show();
         int num = 0;
 
-        if(c.moveToFirst())
-        {
-            do{
-                DisplayElement(c);
+        String displayAllElements = "";
+
+        if (c.moveToFirst()) {
+            do {
+                displayAllElements += DisplayElements(c);
                 num++;
 
             } while (c.moveToNext());
-        }
-        else
-        {
-            Toast.makeText(this, "none here" , Toast.LENGTH_LONG).show();
+            resultsView.setText(displayAllElements);
+        } else {
+            Toast.makeText(this, "none here", Toast.LENGTH_LONG).show();
         }
 
-        Toast.makeText(this, "there are " + num + " elements." , Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "there are " + num + " elements.", Toast.LENGTH_LONG).show();
         db.close();
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public void CopyDB(InputStream inputStream, OutputStream outputStream) throws IOException
     {
@@ -193,17 +139,27 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         outputStream.close();
     }
 
-    public void DisplayElement(Cursor c)
+    public String DisplayElements(Cursor c)
     {
 
-
-        Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
+        String display = "atomic number = " + c.getString(0) + "\n" +
                 "atomic weight = " + c.getString(1) + "\n" +
                 "name = " + c.getString(2) + "\n" +
-                "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
+                "symbol = " + c.getString(3) + "\n" +
+                "melting point = " + c.getString(4) + "\n" +
+                "boiling point = " + c.getString(5) + "\n" +
+                "density = " + c.getString(6) + "\n" +
+                "phase = " + c.getString(7) + "\n" ;
+
+       // Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
+             //   "atomic weight = " + c.getString(1) + "\n" +
+             //   "name = " + c.getString(2) + "\n" +
+               // "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
+
+
+        return display;
 
     }
-
 
     public void lookupElement(View v)
     {

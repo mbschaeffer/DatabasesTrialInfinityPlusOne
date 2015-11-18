@@ -9,6 +9,10 @@ public class Element {
     private double _atomic_weight;
     private String _name;
     private String _symbol;
+    private int _melting_point;
+    private int _boiling_point;
+    private int _density;
+    private String _phase;
 
 
     //No arg constructor
@@ -17,14 +21,18 @@ public class Element {
 
     }
 
-
     //Constructor
-    public Element(int atomic_number, double atomic_weight, String name, String symbol)
+    public Element(int atomic_number, double atomic_weight, String name, String symbol,
+                   int melting_point, int boiling_point, int density, String phase)
     {
         this._atomic_number = atomic_number;
         this._atomic_weight = atomic_weight;
         this._name = name;
         this._symbol = symbol;
+        this._melting_point = melting_point;
+        this._boiling_point = boiling_point;
+        this._density = density;
+        this._phase = phase;
 
 
     }
@@ -53,6 +61,27 @@ public class Element {
         this._symbol = symbol;
     }
 
+    public void set_melting_point(int melting_point)
+    {
+        this._melting_point = melting_point;
+    }
+
+    public void set_boiling_point(int boiling_point)
+    {
+        this._boiling_point = boiling_point;
+    }
+
+    public void set_density(int density)
+    {
+        this._density = density;
+    }
+
+    public void set_phase(String phase)
+    {
+        this._phase = phase;
+    }
+
+
 
     /*---------------
     *     GETTERS
@@ -77,4 +106,23 @@ public class Element {
         return this._symbol;
     }
 
+    public int get_melting_point()
+    {
+        return this._melting_point;
+    }
+
+    public int get_boiling_point()
+    {
+        return this._boiling_point;
+    }
+
+    public int get_density()
+    {
+        return this._density;
+    }
+
+    public String get_phase()
+    {
+        return this._phase;
+    }
 }
