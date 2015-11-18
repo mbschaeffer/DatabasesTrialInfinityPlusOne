@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             Toast.makeText(this, "none here", Toast.LENGTH_LONG).show();
         }
 
+        //toast
         Toast.makeText(this, "there are " + num + " elements.", Toast.LENGTH_LONG).show();
         db.close();
     }
