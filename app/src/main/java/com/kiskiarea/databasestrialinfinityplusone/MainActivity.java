@@ -2,19 +2,15 @@ package com.kiskiarea.databasestrialinfinityplusone;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         SearchView.OnCloseListener {
 
     TextView resultsView;
-
     EditText nameBoxFind;
     TextView elementNameBox;
     TextView atomicNumberBox;
@@ -39,13 +34,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     TextView phaseBox;
     SearchView elementSearchV;
 
-
     /*---Used for searchable list view */
     private ListView myList;
     private ArrayList<String> nameList;
     MyCustomAdapter defaultAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         resultsView = (TextView) findViewById(R.id.txtResults);
         nameBoxFind = (EditText) findViewById(R.id.txtFindElement);
@@ -67,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         phaseBox = (TextView) findViewById(R.id.txtPhase);
         elementSearchV = (SearchView) findViewById(R.id.searchView);
 
+        Log.w("MainActivity", "I GOT HERE");
+
         DBAdapter db = new DBAdapter(this);
 
         try {
@@ -78,15 +71,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
                 Toast.makeText(this, "File does not exist", Toast.LENGTH_LONG).show();
 
-
                 f.mkdirs();
                 f.createNewFile();
 
-
-                CopyDB(getBaseContext().getAssets().open("myPeriodicTableDB"), new FileOutputStream(destPath + "/myPeriodicTableDB"));
+                CopyDB(getBaseContext().getAssets().open("myPeriodicTableDB"),
+                        new FileOutputStream(destPath + "/myPeriodicTableDB"));
 
             }
             Toast.makeText(this, "The file exists!", Toast.LENGTH_LONG).show();
+
+            Log.w("MainActivity", "I GOT HERE");
 
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "File not found", Toast.LENGTH_LONG).show();
@@ -98,12 +92,22 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             e.printStackTrace();
         }
-
+        Log.w("MainActivity", "I GOT HERE");
 
         db.open();
+
+
+        Log.w("MainActivity", "I GOT HERE");
+
         Cursor c = db.getAllElements();
+
+        Log.w("MainActivity", "I GOT HERE");
+
+
         Toast.makeText(this, "got the elements", Toast.LENGTH_LONG).show();
         int num = 0;
+
+        Log.w("MainActivity", "I GOT HERE");
 
         String displayAllElements = "";
 
@@ -152,10 +156,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 "density = " + c.getString(6) + "\n" +
                 "phase = " + c.getString(7) + "\n" ;
 
-       // Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
-             //   "atomic weight = " + c.getString(1) + "\n" +
-             //   "name = " + c.getString(2) + "\n" +
-               // "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
+       Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
+                "atomic weight = " + c.getString(1) + "\n" +
+                "name = " + c.getString(2) + "\n" +
+                "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
 
 
         return display;

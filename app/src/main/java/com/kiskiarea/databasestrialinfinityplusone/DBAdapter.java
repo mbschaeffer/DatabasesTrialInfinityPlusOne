@@ -15,9 +15,11 @@ public class DBAdapter
 {
 
     //static final String DATABASE_NAME = "mydb22";
-    static final String DATABASE_NAME = "myPeriodicTableDB";
+    static final String DATABASE_NAME = "myDb";
+
     //static final String DATABASE_TABLE = "contacts";
     static final String DATABASE_TABLE = "periodic_table";
+
     static final int DATABASE_VERSION = 1;
 
     static final String KEY_ATOMIC_NUMBER = "_atomic_number";
@@ -112,7 +114,8 @@ public class DBAdapter
 
     public Element findElement(String elementname) throws SQLException
     {
-        String query = "Select * FROM " + DATABASE_TABLE + " WHERE " + KEY_NAME + " = \"" + elementname + "\"";
+        String query = "Select * FROM " + DATABASE_TABLE + " WHERE " + KEY_NAME + " " +
+                "= \"" + elementname + "\"";
 
 
         db = DBHelper.getWritableDatabase();
