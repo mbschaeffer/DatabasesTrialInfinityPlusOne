@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         Log.w("MainActivity", "I GOT HERE");
 
-        Cursor c = db.getAllElements();
+        //Cursor c = db.getAllElements();
 
         Log.w("MainActivity", "I GOT HERE");
 
@@ -113,14 +113,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         if (c.moveToFirst()) {
             do {
-                displayAllElements += DisplayElements(c);
+               displayAllElements += DisplayElements(c);
                 num++;
 
             } while (c.moveToNext());
             resultsView.setText(displayAllElements);
         } else {
             Toast.makeText(this, "none here", Toast.LENGTH_LONG).show();
-        }
+       }
 
         //toast
         Toast.makeText(this, "there are " + num + " elements.", Toast.LENGTH_LONG).show();

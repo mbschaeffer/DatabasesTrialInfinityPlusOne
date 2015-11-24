@@ -6,7 +6,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by Melissa on 11/15/2015.
@@ -18,7 +17,7 @@ public class DBAdapter
     static final String DATABASE_NAME = "myDb";
 
     //static final String DATABASE_TABLE = "contacts";
-    static final String DATABASE_TABLE = "periodic_table";
+    static final String DATABASE_TABLE = "periodic_table1";
 
     static final int DATABASE_VERSION = 1;
 
@@ -93,7 +92,7 @@ public class DBAdapter
     //---------retrieves all the elements
     public Cursor getAllElements()
     {
-        return db.query(DATABASE_TABLE, new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME,
+        return db.query(DATABASE_TABLE, new String[]{KEY_NAME, KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT,
                         KEY_SYMBOL, KEY_BPOINT, KEY_MPOINT, KEY_DENSITY, KEY_PHASE},
                 null, null, null, null, null);
     }
@@ -102,8 +101,8 @@ public class DBAdapter
     public Cursor getElement(long rowId) throws SQLException
     {
         Cursor mCursor = db.query(true, DATABASE_TABLE,
-                new String[]{KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT, KEY_NAME, KEY_SYMBOL, KEY_BPOINT,
-                        KEY_MPOINT, KEY_DENSITY, KEY_PHASE}, KEY_ATOMIC_NUMBER
+                new String[]{KEY_NAME, KEY_ATOMIC_NUMBER, KEY_ATOMIC_WEIGHT,
+                        KEY_SYMBOL, KEY_BPOINT, KEY_MPOINT, KEY_DENSITY, KEY_PHASE}, KEY_ATOMIC_NUMBER
                             + "=" + rowId, null, null, null, null,null);
         if(mCursor != null)
         {
