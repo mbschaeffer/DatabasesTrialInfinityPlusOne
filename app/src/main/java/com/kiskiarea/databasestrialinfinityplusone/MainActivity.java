@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         Log.w("MainActivity", "I GOT HERE");
 
-        //Cursor c = db.getAllElements();
+        Cursor c = db.getAllElements();
 
         Log.w("MainActivity", "I GOT HERE");
 
@@ -127,8 +127,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         db.close();
     }
 
-
-
     public void CopyDB(InputStream inputStream, OutputStream outputStream) throws IOException
     {
         //----copy 1k byte at a time
@@ -147,12 +145,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public String DisplayElements(Cursor c)
     {
 
-        String display = "atomic number = " + c.getString(0) + "\n" +
-                "atomic weight = " + c.getString(1) + "\n" +
-                "name = " + c.getString(2) + "\n" +
+        String display = "name = " + c.getString(0) + "\n" +
+                "number = " + c.getString(1) + "\n" +
+                "mass = " + c.getString(2) + "\n" +
                 "symbol = " + c.getString(3) + "\n" +
-                "melting point = " + c.getString(4) + "\n" +
-                "boiling point = " + c.getString(5) + "\n" +
+                "boiling point = " + c.getString(4) + "\n" +
+                "melting point = " + c.getString(5) + "\n" +
                 "density = " + c.getString(6) + "\n" +
                 "phase = " + c.getString(7) + "\n" ;
 
@@ -160,7 +158,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 "atomic weight = " + c.getString(1) + "\n" +
                 "name = " + c.getString(2) + "\n" +
                 "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
-
 
         return display;
 

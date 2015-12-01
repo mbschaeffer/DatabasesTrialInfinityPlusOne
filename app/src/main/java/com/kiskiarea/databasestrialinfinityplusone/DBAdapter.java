@@ -14,10 +14,10 @@ public class DBAdapter
 {
 
     //static final String DATABASE_NAME = "mydb22";
-    static final String DATABASE_NAME = "myDb";
+    static final String DATABASE_NAME = "MyPeriodicDB";
 
     //static final String DATABASE_TABLE = "contacts";
-    static final String DATABASE_TABLE = "periodic_table1";
+    static final String DATABASE_TABLE = "periodic_table";
 
     static final int DATABASE_VERSION = 1;
 
