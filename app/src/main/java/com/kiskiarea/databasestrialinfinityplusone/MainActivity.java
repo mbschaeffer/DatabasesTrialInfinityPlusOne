@@ -154,10 +154,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 "density = " + c.getString(6) + "\n" +
                 "phase = " + c.getString(7) + "\n" ;
 
-       Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
-                "atomic weight = " + c.getString(1) + "\n" +
-                "name = " + c.getString(2) + "\n" +
-                "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
+       //Toast.makeText(this, "atomic number = " + c.getString(0) + "\n" +
+       //         "atomic weight = " + c.getString(1) + "\n" +
+         //       "name = " + c.getString(2) + "\n" +
+        //        "symbol = " + c.getString(3) + "\n" , Toast.LENGTH_SHORT).show();
 
         return display;
 
@@ -171,17 +171,24 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         DBAdapter dbHandler = new DBAdapter(this);
 
 
-
-
-
         Element element = dbHandler.findElement(nameBoxFind.getText().toString());
 
         if(element!=null)
         {
-            String results = "Atomic Number: " + String.valueOf(element.get_atomic_number()) + "\n"
-                    + "Symbol: " + String.valueOf(element.get_symbol())+ "\n"
-                    + "Name: " + String.valueOf(element.get_name()) + "\n"
-                    + "Atomic Weight: " + String.valueOf(element.get_atomic_weight());
+
+            String results = "Atomic Name: " + String.valueOf(element.get_name()) + "\n"
+                    + "Atomic Number: " + String.valueOf(element.get_atomic_number())+ "\n"
+                    + "Atomic Weight: " + String.valueOf(element.get_atomic_weight()) + "\n"
+                    + "Atomic Symbol: " + String.valueOf(element.get_symbol()) + "\n"
+                    + "Boiling Point: " + String.valueOf(element.get_boiling_point()) + "\n"
+                    + "Melting Point: " + String.valueOf(element.get_melting_point()) + "\n"
+                    + "Density: " + String.valueOf(element.get_density()) + "\n"
+                    + "Phase: " + String.valueOf(element.get_phase());
+
+            //String results = "Atomic Number: " + String.valueOf(element.get_atomic_number()) + "\n"
+             //       + "Symbol: " + String.valueOf(element.get_symbol())+ "\n"
+             //       + "Name: " + String.valueOf(element.get_name()) + "\n"
+             //       + "Atomic Weight: " + String.valueOf(element.get_atomic_weight());
 
 
             resultsView.setText(results);

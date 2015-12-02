@@ -30,17 +30,19 @@ public class DBAdapter
     static final String KEY_DENSITY = "density";
     static final String KEY_PHASE = "phase";
 
-
     final Context context;
 
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
 
 
+    //static final String DATABASE_CREATE = "create table periodic_table (_atomic_number integer " +
+    //        "primary key, " + "atomic_weight real, name text, symbol text, melting_point real," +
+     //       " boiling_point real, density real, phase text);";
 
-    static final String DATABASE_CREATE = "create table periodic_table (_atomic_number integer " +
-            "primary key, " + "atomic_weight numeric, name text, symbol text);";
-
+    static final String DATABASE_CREATE = "create table periodic_table (_name text, atomic_number integer " +
+            "primary key, " + "atomic_weight real, symbol text, melting_point real," +
+            " boiling_point real, density real, phase text);";
 
 
     public DBAdapter(Context ctx)
@@ -74,7 +76,6 @@ public class DBAdapter
         }
 
     }
-
     //-----Opens the database------
     public DBAdapter open() throws SQLException
     {
@@ -127,15 +128,25 @@ public class DBAdapter
         {
             cursor.moveToFirst();
 
-            element.set_atomic_number(Integer.parseInt(cursor.getString(0)));
-            element.set_atomic_weight(Double.parseDouble(cursor.getString(1)));
-            element.set_name(cursor.getString(2));
+            element.set_name(cursor.getString(0));
+            element.set_atomic_number(Integer.parseInt(cursor.getString(1)));
+            element.set_atomic_weight(Double.parseDouble(cursor.getString(2)));
             element.set_symbol(cursor.getString(3));
-            element.set_melting_point(Integer.parseInt(cursor.getString(4)));
-            element.set_boiling_point(Integer.parseInt(cursor.getString(5)));
+            element.set_boiling_point(Integer.parseInt(cursor.getString(4)));
+            element.set_melting_point(Integer.parseInt(cursor.getString(5)));
             element.set_density(Integer.parseInt(cursor.getString(6)));
             element.set_phase(cursor.getString(7));
             cursor.close();
+
+            //element.set_atomic_number(Integer.parseInt(cursor.getString(0)));
+            //element.set_atomic_weight(Double.parseDouble(cursor.getString(1)));
+           // element.set_name(cursor.getString(2));
+           // element.set_symbol(cursor.getString(3));
+            //element.set_melting_point(Integer.parseInt(cursor.getString(4)));
+            //element.set_boiling_point(Integer.parseInt(cursor.getString(5)));
+            //element.set_density(Integer.parseInt(cursor.getString(6)));
+           // element.set_phase(cursor.getString(7));
+            //cursor.close();
         }
         else
         {
@@ -145,8 +156,5 @@ public class DBAdapter
 
         return element;
     }
-
-
-
 
 }
