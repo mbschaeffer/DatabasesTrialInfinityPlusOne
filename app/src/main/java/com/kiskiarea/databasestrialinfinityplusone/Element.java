@@ -30,7 +30,7 @@ public class Element {
         this._symbol = symbol;
         this._melting_point = melting_point;
         this._boiling_point = boiling_point;
-        this._density = density;
+        this._density = _density;
         this._phase = phase;
 
 
@@ -55,15 +55,15 @@ public class Element {
     {
         this._symbol = symbol;
     }
-    public void set_boiling_point(int boiling_point)
+    public void set_boiling_point(double boiling_point)
     {
         this._boiling_point = boiling_point;
     }
-    public void set_melting_point(int melting_point)
+    public void set_melting_point(double melting_point)
     {
         this._melting_point = melting_point;
     }
-    public void set_density(int density)
+    public void set_density(double density)
     {
         this._density = density;
     }
