@@ -9,9 +9,9 @@ public class Element {
     private int _atomic_number;
     private double _atomic_weight;
     private String _symbol;
-    private int _melting_point;
-    private int _boiling_point;
-    private int _density;
+    private double _melting_point;
+    private double _boiling_point;
+    private double _density;
     private String _phase;
 
     //No arg constructor
@@ -22,7 +22,7 @@ public class Element {
 
     //Constructor
     public Element(String name,int atomic_number, double atomic_weight, String symbol,
-                   int boiling_point, int melting_point, int density, String phase)
+                   double boiling_point, double melting_point, double density, String phase)
     {
         this._name = name;
         this._atomic_number = atomic_number;
@@ -92,15 +92,15 @@ public class Element {
     {
         return this._symbol;
     }
-    public int get_boiling_point()
+    public double get_boiling_point()
     {
         return this._boiling_point;
     }
-    public int get_melting_point()
+    public double get_melting_point()
     {
         return this._melting_point;
     }
-    public int get_density()
+    public double get_density()
     {
         return this._density;
     }

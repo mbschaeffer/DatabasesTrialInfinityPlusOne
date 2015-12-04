@@ -69,35 +69,40 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             if (!f.exists()) {
 
+                Log.w("MainActivity", "-----The file does not exists!");
                 Toast.makeText(this, "File does not exist", Toast.LENGTH_LONG).show();
 
                 f.mkdirs();
+
+
                 f.createNewFile();
 
-                CopyDB(getBaseContext().getAssets().open("myPeriodicTableDB"),
-                        new FileOutputStream(destPath + "/myPeriodicTableDB"));
+                CopyDB(getBaseContext().getAssets().open("MyPeriodicDB2"),
+                        new FileOutputStream(destPath + "/MyPeriodicDB2"));
 
             }
             Toast.makeText(this, "The file exists!", Toast.LENGTH_LONG).show();
 
-            Log.w("MainActivity", "I GOT HERE");
+            Log.w("MainActivity", "-----The file exists!");
 
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "File not found", Toast.LENGTH_LONG).show();
+            Log.w("MainActivity", "-----File Not Found!");
 
             e.printStackTrace();
         } catch (IOException e) {
 
             Toast.makeText(this, "IOException issue", Toast.LENGTH_LONG).show();
 
+            Log.w("MainActivity", "-----IOException issue");
+
             e.printStackTrace();
         }
-        Log.w("MainActivity", "I GOT HERE");
+        Log.w("MainActivity", "Trying to open the database");
 
         db.open();
 
-
-        Log.w("MainActivity", "I GOT HERE");
+        Log.w("MainActivity", "-----The database is open!");
 
         Cursor c = db.getAllElements();
 

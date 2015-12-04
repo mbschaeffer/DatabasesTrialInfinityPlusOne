@@ -1,0 +1,5 @@
+BEGIN TRANSACTION;
+CREATE TABLE `periodic_table` (
+	`Field1`	INTEGER
+);
+COMMIT;

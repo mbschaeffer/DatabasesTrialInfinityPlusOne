@@ -14,14 +14,14 @@ public class DBAdapter
 {
 
     //static final String DATABASE_NAME = "mydb22";
-    static final String DATABASE_NAME = "MyPeriodicDB";
+    static final String DATABASE_NAME = "MyPeriodicDB2";
 
     //static final String DATABASE_TABLE = "contacts";
     static final String DATABASE_TABLE = "periodic_table";
 
     static final int DATABASE_VERSION = 1;
 
-    static final String KEY_ATOMIC_NUMBER = "_atomic_number";
+    static final String KEY_ATOMIC_NUMBER = "atomic_number";
     static final String KEY_ATOMIC_WEIGHT = "atomic_weight";
     static final String KEY_NAME = "name";
     static final String KEY_SYMBOL = "symbol";
@@ -35,15 +35,9 @@ public class DBAdapter
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
 
-
-    //static final String DATABASE_CREATE = "create table periodic_table (_atomic_number integer " +
-    //        "primary key, " + "atomic_weight real, name text, symbol text, melting_point real," +
-     //       " boiling_point real, density real, phase text);";
-
-    static final String DATABASE_CREATE = "create table periodic_table (_name text, atomic_number integer " +
-            "primary key, " + "atomic_weight real, symbol text, melting_point real," +
-            " boiling_point real, density real, phase text);";
-
+    static final String DATABASE_CREATE = "create table periodic_table (_name text, atomic_number" +
+            " " + "integer " + "primary key, " + "atomic_weight real, symbol text, " +
+            "melting_point real," + "boiling_point real, density real, phase text);";
 
     public DBAdapter(Context ctx)
     {
@@ -115,7 +109,7 @@ public class DBAdapter
     public Element findElement(String elementname) throws SQLException
     {
         String query = "Select * FROM " + DATABASE_TABLE + " WHERE " + KEY_NAME + " " +
-                "= \"" + elementname + "\"";
+                "= \"" + elementname + "\" COLLATE NOCASE";
 
 
         db = DBHelper.getWritableDatabase();
@@ -132,9 +126,9 @@ public class DBAdapter
             element.set_atomic_number(Integer.parseInt(cursor.getString(1)));
             element.set_atomic_weight(Double.parseDouble(cursor.getString(2)));
             element.set_symbol(cursor.getString(3));
-            element.set_boiling_point(Integer.parseInt(cursor.getString(4)));
-            element.set_melting_point(Integer.parseInt(cursor.getString(5)));
-            element.set_density(Integer.parseInt(cursor.getString(6)));
+            element.set_boiling_point(Double.parseDouble(cursor.getString(4)));
+            element.set_melting_point(Double.parseDouble(cursor.getString(5)));
+            element.set_density(Double.parseDouble(cursor.getString(6)));
             element.set_phase(cursor.getString(7));
             cursor.close();
 
