@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         if(element!=null)
         {
-
             String results = "Atomic Name: " + String.valueOf(element.get_name()) + "\n"
                     + "Atomic Number: " + String.valueOf(element.get_atomic_number())+ "\n"
                     + "Atomic Weight: " + String.valueOf(element.get_atomic_weight()) + "\n"
@@ -189,12 +188,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     + "Melting Point: " + String.valueOf(element.get_melting_point()) + "\n"
                     + "Density: " + String.valueOf(element.get_density()) + "\n"
                     + "Phase: " + String.valueOf(element.get_phase());
-
-            //String results = "Atomic Number: " + String.valueOf(element.get_atomic_number()) + "\n"
-             //       + "Symbol: " + String.valueOf(element.get_symbol())+ "\n"
-             //       + "Name: " + String.valueOf(element.get_name()) + "\n"
-             //       + "Atomic Weight: " + String.valueOf(element.get_atomic_weight());
-
 
             resultsView.setText(results);
 
