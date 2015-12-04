@@ -131,16 +131,6 @@ public class DBAdapter
             element.set_density(Double.parseDouble(cursor.getString(6)));
             element.set_phase(cursor.getString(7));
             cursor.close();
-
-            //element.set_atomic_number(Integer.parseInt(cursor.getString(0)));
-            //element.set_atomic_weight(Double.parseDouble(cursor.getString(1)));
-           // element.set_name(cursor.getString(2));
-           // element.set_symbol(cursor.getString(3));
-            //element.set_melting_point(Integer.parseInt(cursor.getString(4)));
-            //element.set_boiling_point(Integer.parseInt(cursor.getString(5)));
-            //element.set_density(Integer.parseInt(cursor.getString(6)));
-           // element.set_phase(cursor.getString(7));
-            //cursor.close();
         }
         else
         {
