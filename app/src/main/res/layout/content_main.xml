@@ -41,80 +41,6 @@
         android:id="@+id/txtFindElement"
         android:hint="Enter element name"/>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtName"
-        android:text="name"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtAtomicNumber"
-        android:text="atomic number"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtAtomicWeight"
-        android:text="atomic weight"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtSymbol"
-        android:text="Enter element symbol"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtMelting"
-        android:text="Enter melting point"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtBoiling"
-        android:text="Enter boiling point"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtDensity"
-        android:text="Enter element density"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtPhase"
-        android:text="Enter element page"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:textSize="18dp" />
-
-
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -127,9 +53,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtResults"
         android:textSize="24dp" />
-
-
-
-
 
 </LinearLayout>

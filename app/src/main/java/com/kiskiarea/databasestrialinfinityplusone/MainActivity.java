@@ -48,14 +48,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         resultsView = (TextView) findViewById(R.id.txtResults);
         nameBoxFind = (EditText) findViewById(R.id.txtFindElement);
-        elementNameBox = (TextView) findViewById(R.id.txtName);
-        atomicNumberBox = (TextView) findViewById(R.id.txtAtomicNumber);
-        atomicWeightBox = (TextView) findViewById(R.id.txtAtomicWeight);
-        symbolBox = (TextView) findViewById(R.id.txtSymbol);
-        meltingBox = (TextView) findViewById(R.id.txtMelting);
-        boilingBox = (TextView) findViewById(R.id.txtBoiling);
-        densityBox = (TextView) findViewById(R.id.txtDensity);
-        phaseBox = (TextView) findViewById(R.id.txtPhase);
+
+
         elementSearchV = (SearchView) findViewById(R.id.searchView);
 
         Log.w("MainActivity", "I GOT HERE");
@@ -191,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             resultsView.setText(results);
 
-            atomicNumberBox.setText(String.valueOf(element.get_atomic_number()));
+            //atomicNumberBox.setText(String.valueOf(element.get_atomic_number()));
         }
         else
         {
