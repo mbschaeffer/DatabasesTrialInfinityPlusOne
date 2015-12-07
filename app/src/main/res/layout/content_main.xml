@@ -12,10 +12,12 @@
     android:background="#fcfccb">
 
 
-    <TextView android:text="My Periodic Table Search Database"
-        android:layout_width="wrap_content"
+    <TextView android:text="Periodic Element Finder"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32dp"/>
+        android:textSize="32dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/title" />
 
     <ListView
         android:id="@+id/list"
@@ -39,7 +41,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtFindElement"
-        android:hint="Enter element name"/>
+        android:hint="Enter element name"
+        android:gravity="center_horizontal" />
 
     <Button
         android:layout_width="fill_parent"
@@ -48,10 +51,11 @@
         android:id="@+id/btnLookup"
         android:onClick="lookupElement"/>
 
-    <TextView android:text="Search Results..."
+    <TextView android:text="Searching Element..."
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtResults"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:gravity="center_horizontal" />
 
 </LinearLayout>
